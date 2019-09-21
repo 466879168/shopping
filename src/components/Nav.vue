@@ -30,6 +30,7 @@ name:'Nav'
   height 50px
   display flex
   border-top 1px solid #999
+  background: #fff;
   div
     flex 1
     text-align center

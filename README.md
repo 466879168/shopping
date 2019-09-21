@@ -1,29 +1,9 @@
-# shopping
+# shopping 
 
-## Project setup
-```
-npm install
-```
+> 项目组件划分以及方法名字如下：
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
++ 首页 home
+  + 首页头部 homeHeader
+  + 首页主体 homeMain
+  + 首页每一个商品组件oneCommodity
+  + 商品详情页 details
