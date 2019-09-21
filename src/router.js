@@ -4,6 +4,7 @@ import Router from 'vue-router'
 const Home=()=>import('./views/home/Home')
 const Cart=()=>import('./views/cart/Cart')
 const Profile=()=>import('./views/profile/Profile')
+const Detail=()=>import("./views/home/detail")
 
 Vue.use(Router)
 
@@ -23,6 +24,10 @@ const routes=[
 {
   path:'/profile',
   component:Profile
+},
+{
+  path:'/detail/:id',
+  component:Detail
 },
 ]
 

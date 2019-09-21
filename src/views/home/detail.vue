@@ -1,13 +1,17 @@
 <template>
-<!--  商品详情页 -->
+  <!-- 商品详情页 -->
+  <div class="detail">
+    
+  </div>
 </template>
 
 <script>
-  export default {
-    name: "detail"
-  }
+export default {
+name:'Detail',
+
+}
 </script>
 
-<style scoped>
+<style>
 
 </style>

@@ -4,11 +4,11 @@
       <div class="iconfont icon-shouye"></div>
       <div>首页</div>
       </router-link>
-    <router-link tag="div" to="cart">
+    <router-link tag="div" to="/cart">
       <div class="iconfont icon-weibiaoti--"></div>
       <div>购物车</div>
       </router-link>
-    <router-link tag="div" to="profile">
+    <router-link tag="div" to="/profile">
       <div class="iconfont icon-wode"></div>
       <div>我的</div>
       </router-link>

@@ -1,6 +1,6 @@
 <template>
 <!--  首页中的单个商品  -->
-  <div class="one-commodity">
+  <router-link tag="div" class="one-commodity" :to="'detail/'+itemId">
     <div class="left">
       <img :src="imgUrl" alt="">
     </div>
@@ -11,16 +11,21 @@
         <div class="price">￥<span class="price-number">{{price}}</span></div>
       </div>
       <div class="btn">
-          <span class="iconfont icon-bag_icon"></span>
+          <span class="iconfont icon-bag_icon" v-show="!countSize" @click.stop="addGoodToCart"></span>
+					<my-input :count1="counter" :onlyId="itemId" v-show="countSize >0"></my-input>
       </div>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
+	import myInput from '../../components/myInput'
   export default {
     name: "oneCommodity",
     props:['itemId','imgUrl', 'title', 'content', 'price', 'count'],
+		components:{
+			myInput
+		},
     data(){
       return {
         oneCommodity: {
@@ -35,8 +40,44 @@
       }
     },
     created() {
-
-    }
+      
+    },
+		computed:{
+			//计算下当前的count是多少，然后传给子组件
+			counter(){
+				let that=this
+				let goodsCart=this.$store.state.cartGoods
+				let result =0
+				goodsCart.some(good=>{
+					if (good.id === that.itemId) {
+						result = good.count
+					}
+				})
+				return result
+			},
+			countSize(){
+				//当前商品的id
+				let id =this.oneCommodity.id
+				let num
+				//
+				this.$store.state.cartGoods.some((val)=>{
+					if (val.id === id) {
+						num=val.count
+					}
+				})
+				if (num>0) {
+					return true
+				}else{
+					return false
+				}
+			}
+		},
+		methods:{
+			//点击粉色的菜篮子添加到购物车
+			addGoodToCart(){
+				this.$store.commit('addGoodsToCart',this.oneCommodity)
+      }
+		}
   }
 </script>
 

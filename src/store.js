@@ -7,6 +7,10 @@ export default new Vuex.Store({
   state: {
     //商品当前的类型是那个
     goodCurrentType:0,
+    //当前购物车的数量
+    cartNum:0,
+    //当前添加到购物车中的商品有哪些
+    cartGoods:[],
     goods:[
       {"id":1, "kind": 1, "img": "http://ww1.sinaimg.cn/large/00611hkHly1g743edzmuhj305k05kt9r.jpg", "title": "这是水果1", "content": "这是水果介绍", "price": 18 },
       {"id":2, "kind": 1, "img": "http://ww1.sinaimg.cn/large/00611hkHly1g743ee0x6zj305k05kwfv.jpg", "title": "这是水果2", "content": "这是水果介绍", "price": 20 },
@@ -24,10 +28,53 @@ export default new Vuex.Store({
       {"id":14, "kind": 7, "img": "http://ww1.sinaimg.cn/large/00611hkHly1g743dswt7pj305k05kjsw.jpg", "title": "这是零食2", "content": "这是零食介绍", "price": 15 }
     ]
   },
+  //让每一个商品的添加到购物车的数量+1
   mutations: {
-
-  },
-  actions: {
-
+		//增加到购物车  item是保存着这个商品信息的对象
+		addGoodsToCart(state,item){
+			//当前对象是否在购物车里
+			item.isisInCart=true
+			//当前商品的count++
+			item.count++
+			//把这个对象保存在购物车数组中
+			state.cartGoods.push(item)
+			//购物车数量+1
+			state.cartNum++
+		},
+		//id是当前商品的唯一ID 记录下是那个商品在操作
+    addGoods(state,itemId){
+      state.cartNum++
+			//当点击触发时判断下当前添加到购物车里的商品 并且让这个商品的count++
+      state.cartGoods.some(val=>{
+				if (val.id === itemId) {
+					val.count++
+					return true
+				}
+			})
+    },
+		//当点击触发时，当前购物车的总数量减1
+		reduceGoods(state,itemId){
+			state.cartNum++
+			//让这个商品中的count++
+			state.cartGoods.some(val=>{
+				if (val.id === itemId) {
+					val.count--
+					return true
+				}
+			})
+		},
+		//当这个商品的count为1的时候 判断下继续减少就从购物车里删除
+		deleteGoodsFromCart(state,itemId){
+			state.cartNum--
+			//参数分别是 当前项  当前项索引 当前遍历的数组对象
+			state.cartGoods.some((val,index,goods)=>{
+				if (val.id === itemId) {
+					val.isInCart=false
+					val.count--
+					goods.splice(index,1)
+					return true;
+				}
+			})
   }
+}
 })
