@@ -1,6 +1,9 @@
 <template>
 <!--  首页中的单个商品  -->
-  <router-link tag="div" class="one-commodity" :to="'detail/'+itemId">
+  <router-link tag="div" class="one-commodity" :to="{
+  path:'/detail',
+  query:oneCommodity
+  }">
     <div class="left">
       <img :src="imgUrl" alt="">
     </div>
@@ -21,7 +24,7 @@
 <script>
 	import myInput from '../../components/myInput'
   export default {
-    name: "oneCommodity",
+    name: "HomeoneCommodity",
     props:['itemId','imgUrl', 'title', 'content', 'price', 'count'],
 		components:{
 			myInput
@@ -40,7 +43,7 @@
       }
     },
     created() {
-      
+      //console.log(this.imgUrl)
     },
 		computed:{
 			//计算下当前的count是多少，然后传给子组件
@@ -75,6 +78,7 @@
 		methods:{
 			//点击粉色的菜篮子添加到购物车
 			addGoodToCart(){
+        console.log(this.oneCommodity)
 				this.$store.commit('addGoodsToCart',this.oneCommodity)
       }
 		}
@@ -94,7 +98,6 @@
   .left
     width: 40%
     height: 100%
-    border-right 1px solid #ccc
     text-align center
     img
       width: 60%

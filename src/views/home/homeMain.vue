@@ -3,14 +3,14 @@
   <div class="main">
     <ul class="goods">
       <li v-for="item in goods" class="one-com" v-show="isCurrent(item.kind)" :key="item.id">
-        <one-commodity
+        <Homeone-commodity
             :itemId="item.id"
             :imgUrl="item.img"
             :title="item.title"
             :content="item.content"
             :price="item.price"
             :count="0"
-        ></one-commodity>
+        ></Homeone-commodity>
       </li>
     </ul>
     <div class="no-more">
@@ -20,11 +20,11 @@
 </template>
 
 <script>
-  import oneCommodity from './oneCommodity'
+  import HomeoneCommodity from './HomeoneCommodity'
   export default {
     name: "homeMain",
     components: {
-      oneCommodity
+      HomeoneCommodity
     },
     data() {
       return {
@@ -47,9 +47,6 @@
           return num === currentKind
         }
       }
-    },
-    computed:{
-
     }
   }
 </script>

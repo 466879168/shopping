@@ -33,11 +33,12 @@ export default new Vuex.Store({
 		//增加到购物车  item是保存着这个商品信息的对象
 		addGoodsToCart(state,item){
 			//当前对象是否在购物车里
-			item.isisInCart=true
+			item.isInCart=true
 			//当前商品的count++
 			item.count++
 			//把这个对象保存在购物车数组中
 			state.cartGoods.push(item)
+			//console.log(state.cartGoods)
 			//购物车数量+1
 			state.cartNum++
 		},
