@@ -6,7 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
 		//是否登录默认为false
-		isLogin:true,
+		isLogin:false,
 		//没有登陆状态，用户名为空
 		username:'',
 		//默认存储的地址
@@ -95,9 +95,26 @@ export default new Vuex.Store({
 				}
 			})
 	},
+    //登录
 	login(state,username){
 		state.username = username
 		state.isLogin=true
-	}
+	},
+    //退出
+    exit(state){
+		  state.isLogin=false
+    },
+    //修改地址后把修改后的值保存
+    modifyAddress(state,item){
+      state.address[item.index]=item.value
+    },
+    //新增地址
+  addNewAddress(state,newAdd){
+    state.address.push(newAdd)
+  },
+    //从index位置删除一个地址
+    deleteAddress(sate,index){
+		  state.address.splice(index,1)
+    }
 }
 })
