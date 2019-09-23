@@ -1,8 +1,8 @@
 <template>
   <div class="myInput">
-     <i class="iconfont icon-plus-minus" @click="reduce"></i>
+     <i class="iconfont icon-plus-minus" @click.stop="reduce"></i>
       <span>{{count1}}</span>
-     <i class="iconfont icon-jia" @click="add"></i>
+     <i class="iconfont icon-jia" @click.stop="add"></i>
   </div>
 </template>
 

@@ -31,6 +31,7 @@ name:'Nav'
   display flex
   border-top 1px solid #999
   background: #fff;
+  z-index 1
   div
     flex 1
     text-align center

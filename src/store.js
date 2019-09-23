@@ -5,6 +5,25 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+		//是否登录默认为false
+		isLogin:true,
+		//没有登陆状态，用户名为空
+		username:'',
+		//默认存储的地址
+		address:[
+      {
+        name: 'dylan',
+        phone: 111111111111,
+        city: '郑州',
+        detailAdd: '管城自治区第三中学'
+      },
+      {
+        name: 'luna',
+        phone: 2222222222,
+        city: '郑州',
+        detailAdd: '中原区五一公园'
+      },
+    ],
     //商品当前的类型是那个
     goodCurrentType:0,
     //当前购物车的数量
@@ -28,7 +47,6 @@ export default new Vuex.Store({
       {"id":14, "kind": 7, "img": "http://ww1.sinaimg.cn/large/00611hkHly1g743dswt7pj305k05kjsw.jpg", "title": "这是零食2", "content": "这是零食介绍", "price": 15 }
     ]
   },
-  //让每一个商品的添加到购物车的数量+1
   mutations: {
 		//增加到购物车  item是保存着这个商品信息的对象
 		addGoodsToCart(state,item){
@@ -76,6 +94,10 @@ export default new Vuex.Store({
 					return true;
 				}
 			})
-  }
+	},
+	login(state,username){
+		state.username = username
+		state.isLogin=true
+	}
 }
 })

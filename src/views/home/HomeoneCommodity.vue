@@ -78,7 +78,6 @@
 		methods:{
 			//点击粉色的菜篮子添加到购物车
 			addGoodToCart(){
-        console.log(this.oneCommodity)
 				this.$store.commit('addGoodsToCart',this.oneCommodity)
       }
 		}

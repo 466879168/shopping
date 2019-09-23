@@ -4,7 +4,7 @@
     <div class="header">
       <h3>我的购物车</h3>
     </div>
-    <div class="main">
+    <div class="main" v-if="cartGoods.length>0">
       <ul class="goods-wrap">
         <li v-for="item in cartGoods" :key="item.id">
           <one-commodity
@@ -56,9 +56,15 @@
           <span class="right">￥{{pay}}</span>
         </div>
       </div>
-      <div class="footer"></div>
+      <div class="footer">
+        <div class="gopay">
+           <el-button class="text" type="primary" @click="toOrder">去结算></el-button>
+        </div>
+      </div>
     </div>
-    <div class="empty-wrap"></div>
+    <div class="empty-wrap" v-else>
+      您还没有添加任何产品！
+    </div>
   </div>
 </template>
 
@@ -86,6 +92,7 @@ export default {
     OneCommodity
   },
   computed: {
+    //获取当前购物车中的商品
     cartGoods() {
       return this.$store.state.cartGoods;
     },
@@ -102,13 +109,15 @@ export default {
     //合计
     pay(){
       let result =this.amount-this.redPacket
+      console.log(result)
       if(result>=49){
         this.needPostage=false
       }else {
         this.needPostage=true
       }
       if(this.needPostage){
-        result+=this.needPostage
+        result+=this.postage
+        console.log(result)
       }
       return result;
     }
@@ -128,13 +137,34 @@ export default {
         return true
       }else {
         //有可用的红包的时候默认选择最大的优惠
-        this.redPackets.resolve().some(val=>{
+        this.redPackets.concat().reverse().some(val=>{
           if(val.limit<=this.amount){
             this.redPacket=val.money
             return true
           }
         })
         return false
+      }
+    },
+    //跳转到订单也面
+    toOrder(){
+      let isLogin =this.$store.state.isLogin
+      //判断当前状态是否为登录
+      if(!isLogin){
+        this.$router.push({
+          path:'/Login'
+        })
+        return 
+      }
+      if(this.cartGoods.length>0){
+        this.$router.push({
+          path:'/order',
+          //把当前购物车的商品和总价格传过去
+          query: {
+            cartGoods:this.cartGoods,
+            pay:this.pay
+          }
+        })
       }
     }
   }
@@ -167,6 +197,7 @@ export default {
       background #fff
       text-align left 
       color #2c3e50
+      margin-bottom 100px
       .amount
         height 40px
         line-height 40px
@@ -190,5 +221,24 @@ export default {
         line-height 40px
         .right  
           float right 
-
+    .footer
+      text-align right
+      background #fff
+      position fixed
+      left 0
+      right 1px
+      bottom 50px
+      .gopay
+        .text
+          color #fff
+  .empty-wrap
+    position absolute
+    height 50px
+    width 100%
+    top 50% 
+    margin-top -25px
+    color #2c3e50
+    font-size 20px
+    text-align center
+          
 </style>

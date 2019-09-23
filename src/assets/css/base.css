@@ -79,6 +79,7 @@ video {
 
 body {
   line-height: 1;
+  background: #f5f5f5;
 }
 
 :focus {
@@ -186,4 +187,10 @@ html {
 }
 html,body{
   height: 100%;
+}
+.fl{
+  float: left;
+}
+.fr{
+  float: right;
 }

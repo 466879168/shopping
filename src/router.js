@@ -5,6 +5,8 @@ const Home=()=>import('./views/home/Home')
 const Cart=()=>import('./views/cart/Cart')
 const Profile=()=>import('./views/profile/Profile')
 const Detail=()=>import("./views/home/detail")
+const Order=()=>import("./views/cart/order")
+const Login=()=>import("./views/login/login")
 
 Vue.use(Router)
 
@@ -28,6 +30,14 @@ const routes=[
 {
   path:'/detail',
   component:Detail
+},
+{
+  path:'/order',
+  component:Order
+},
+{
+  path:'/login',
+  component:Login
 },
 ]
 
