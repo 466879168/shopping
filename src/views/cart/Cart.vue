@@ -109,7 +109,7 @@ export default {
     //合计
     pay(){
       let result =this.amount-this.redPacket
-      console.log(result)
+      //console.log(result)
       if(result>=49){
         this.needPostage=false
       }else {
@@ -117,7 +117,7 @@ export default {
       }
       if(this.needPostage){
         result+=this.postage
-        console.log(result)
+        //console.log(result)
       }
       return result;
     }

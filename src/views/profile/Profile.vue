@@ -15,7 +15,7 @@
    </el-button>
 </div>
 <div class="footer">
-    <el-button type="danger">退出登录</el-button>
+    <el-button class="prifile-f-btn" type="danger" @click="exit">退出登录</el-button>
 </div>
 </div>
 </div>
@@ -33,6 +33,7 @@
       }
     },
     methods: {
+      //去登陆
       toLogin(){
         this.$router.push({
           path:'/login'
@@ -42,6 +43,10 @@
         this.$router.push({
           path:'/myaddress'
         })
+      },
+      //退出登录
+      exit(){
+        this.$store.commit('exit')
       }
     },
     mounted(){
@@ -61,6 +66,10 @@
   position: absolute;
   right: 0;
   top: 10px;
+}
+.profile .footer .prifile-f-btn{
+  width: 100%;
+  margin-top: 10px;
 }
 </style>
 

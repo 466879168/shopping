@@ -3,7 +3,7 @@
   <div class="add">
     <div class="header">
       <span class="iconfont icon-jiantou" @click="back"></span>
-      <h3>修改收货地址</h3>
+      <h3>新增收货地址</h3>
     </div>
     <div class="main">
       <el-form :model="newAddForm" :rules="rules"  :label-position="'left'" label-width="80px"  ref="newAddForm">
@@ -24,8 +24,8 @@
     <div class="footer">
       <el-form>
         <el-form-item>
-          <el-button type="primary" @click="submit('newAddForm')">保存修改</el-button>
-          <el-button type="danger" @click="reset('newAddForm')">重置</el-button>
+          <el-button type="primary" @click="submit">保存修改</el-button>
+          <el-button type="danger" @click="reset">重置</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -72,16 +72,17 @@
       back(){
         this.$router.go(-1)
       },
-      submit(formName){
-        if (this.formName){
-          this.$store.commit('addNewAddress',this.formName)
+      submit(){
+          this.$store.commit('addNewAddress',this.newAddForm)
           this.$router.push({
             path:'/myaddress'
           })
-        }
       },
-      reset(formName){
-        this.$refs[formName].resetFields()
+      reset(){
+        this.newAddForm.name=''
+        this.newAddForm.phone=''
+        this.newAddForm.city=''
+        this.newAddForm.detailAdd=''
       }
     }
   }

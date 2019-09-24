@@ -16,7 +16,7 @@
     </ul>
   </div>
   <div class="footer">
-    <el-button type="primary" @click="toAdd">新增收货地址</el-button>
+    <el-button class="footer-btn" type="primary" @click="toAdd">新增收货地址</el-button>
   </div>
 </div>
 </template>
@@ -24,6 +24,9 @@
 <script>
   export default {
     name: "myAddress",
+    mounted(){
+      console.log(this.allAddress)
+    },
     methods:{
       back(){
         this.$router.go(-1)
@@ -50,7 +53,7 @@
 </script>
 
 <style>
-  .footer .el-button--primary{
+  .footer .footer-btn{
     width: 100%;
   }
 </style>
@@ -76,6 +79,7 @@
 }
 .main{
   margin-top:60px;
+  padding-left: 10px;
 }
 .main li{
   border-bottom: 1px solid #eeeeee;

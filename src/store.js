@@ -73,8 +73,8 @@ export default new Vuex.Store({
     },
 		//当点击触发时，当前购物车的总数量减1
 		reduceGoods(state,itemId){
-			state.cartNum++
-			//让这个商品中的count++
+			state.cartNum--
+			//让这个商品中的count--
 			state.cartGoods.some(val=>{
 				if (val.id === itemId) {
 					val.count--
@@ -101,8 +101,8 @@ export default new Vuex.Store({
 		state.isLogin=true
 	},
     //退出
-    exit(state){
-		  state.isLogin=false
+  exit(state){
+		state.isLogin=false
     },
     //修改地址后把修改后的值保存
     modifyAddress(state,item){
@@ -113,8 +113,8 @@ export default new Vuex.Store({
     state.address.push(newAdd)
   },
     //从index位置删除一个地址
-    deleteAddress(sate,index){
-		  state.address.splice(index,1)
+  deleteAddress(state,index){
+		state.address.splice(index,1)
     }
 }
 })

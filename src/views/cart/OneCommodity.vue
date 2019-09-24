@@ -27,6 +27,7 @@
 		},
     data(){
       return {
+        dialogVisible:false,
         oneCommodity: {
           id: this.itemId,
           imgUrl: this.imgUrl,
@@ -72,7 +73,10 @@
 			}
 		},
 		methods:{
-		
+		confirmDelete(){
+      this.dialogVisible=false
+      this.$store.commit('deleteGoodsFromCart',this.itemId)
+    }
 		}
   }
 </script>

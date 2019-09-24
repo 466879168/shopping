@@ -89,6 +89,7 @@ export default {
     margin-top 50px
     .img-wrap
       text-align center
+      background #fff
     .text
       text-align center
       line-height 40px
