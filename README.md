@@ -27,3 +27,6 @@
 + 页面头部可以抽取成一个公共组件
 + better-scroll的使用
 + 购物车商品减为0跳出弹窗
+
+项目地址：
+[https://466879168.github.io/shopping/dist/index.html](https://466879168.github.io/shopping/dist/index.html)
