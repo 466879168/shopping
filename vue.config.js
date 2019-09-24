@@ -1,6 +1,19 @@
-//vue.config.js
+// vue.config.js
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production'
-    ? '/shopping/'
-    : '/'
+  baseUrl:"./",
+  outputDir:"dist",
+  assetsDir:"assets",
+  indexPath:"index.html",
+  filenameHashing:true,
+  pages:undefined,
+  lintOnSave:true,
+  runtimeCompiler:false,
+  transpileDependencies:[],
+  productionSourceMap:false,
+  crossorigin:undefined,
+  integrity:false,
+  devServer:{//代理
+      port:8080,
+      proxy:'http://192.168.1.3:8080'
+  }
 }
